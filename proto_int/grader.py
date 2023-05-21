@@ -56,10 +56,10 @@ def result(response: str, prompt: str):
     prompt = prompt_gen(t, temp)
     with open('out.json', 'a') as file:
         t = chat_with_gpt(prompt)
-        file.write(f'{{\n{response[:-4]} {t}\n}}')
+        file.write(f'{{\n{response[:-4]} {t}\n}}\n')
 
 if __name__ == '__main__':
-    infile = sys.argv[1]
+    infile = input('infile: ')
     current_directory = os.path.dirname(os.path.abspath(__file__))
     tf = os.path.join(current_directory, 'prompt.txt')
     result(infile, tf)
