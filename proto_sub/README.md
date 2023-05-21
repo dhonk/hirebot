@@ -1,3 +1,0 @@
-#Prototype Subtitling
-
-Matthew Steven
