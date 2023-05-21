@@ -1,13 +1,11 @@
 import openai
 import string
-import matplotlib.pyplot as plt
-#import gen_sub
-#import proto_int.transcribe as transcribe 
 import transcribe
+import json
+
 # use gen_sub to turn audio into string
 def get_audio()->str: 
     f = transcribe.text()
-    
     return transcribe.get_text(f, openai.api_key)
 
 # Get specification array
@@ -16,18 +14,13 @@ def get_specs(specifications: str)->list[str]:
     return spec_arr
 
 # generate prompt based 
-def prompt_gen(spec_arr: list[str], response: str)->str:
-    variables = string.ascii_lowercase
-    gpt_prompt = ''
-    gpt_prompt = response + '\n\n'
-    gpt_prompt += 'Pretend that you are a interviewer for job applicants. Grade this prompt with this rubric:\n'
-    for i in range(len(spec_arr)):
-        gpt_prompt += f"a variable {variables[i]} indicating {spec_arr[i]} from a scale of 1-100, 50 being an acceptable college essay or job application"
-    gpt_prompt += 'Grade this prompt exactly with this rubric with this format:\n'
-    for i in range(len(spec_arr)):
-        gpt_prompt += f"{spec_arr[i]}\n"
-        gpt_prompt += f"{variables[i]}\n"
+def prompt_gen(prompt: str, response: str)->str:
+    gpt_prompt = f'prompt: {prompt}\n\nresponse: {response}\n\n'
+    with open('gpt_prompt.txt') as file:
+        t = file.read()
+        gpt_prompt += t
     return gpt_prompt
+
 
 # Sets up openai API credentials
 def set_api()->None:
@@ -38,7 +31,7 @@ def chat_with_gpt(prompt: str)->str:
     response = openai.Completion.create(
         engine='text-davinci-003',
         prompt=prompt,
-        max_tokens=100,
+        max_tokens=1000,
         temperature=0.7,
         top_p=1.0,
         n=1,
@@ -52,28 +45,22 @@ def chat_with_gpt(prompt: str)->str:
     else:
         return "Sorry, I couldn't generate a response."
 
-def response_gen(prompt: str)->list[int]:
-    response = chat_with_gpt(prompt)
-    res_arr = response.split('\n')
-    for i in range(len(res_arr)):
-        res_arr[i] = int(''.join(c for c in res_arr[i] if c.isdigit()))
-    return res_arr
+def result(response: str, prompt: str):
+    set_api()
+    temp = ''
+    with open(response, 'r') as file:
+        temp = file.read()
+    t = ''
+    with open(prompt, 'r') as file:
+        t = file.read()
+    prompt = prompt_gen(t, temp)
+    with open('out.json', 'w') as file:
+        file.write('')
+    with open('out.json', 'a') as file:
+        t = chat_with_gpt(prompt)
+        file.write(f'{{\n{response[:-4]} {t}\n}}')
 
 if __name__ == '__main__':
-    set_api()
-    temp = get_audio()
-    print(temp)
-    specs = input("Specs: ")
-    spec_arr = get_specs()
-    prompt = prompt_gen(spec_arr, temp)
-    temp = chat_with_gpt(prompt)
-    res_arr = response_gen(temp)
-
-    plt.bar(spec_arr, res_arr, width=0.3)
-    plt.xlabel('Trait')
-    plt.ylabel('Affinity')
-    plt.title('Applicant Affinity')
-    plt.ylim(0,100)
-
-    plt.show()
+    result('int_response.txt', 'prompt.txt')
+    result('eh_response.txt', 'prompt.txt')
 
