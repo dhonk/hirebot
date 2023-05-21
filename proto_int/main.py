@@ -1,12 +1,14 @@
 import openai
 import string
 import matplotlib.pyplot as plt
-import gen_sub
-
+#import gen_sub
+#import proto_int.transcribe as transcribe 
+import transcribe
 # use gen_sub to turn audio into string
 def get_audio()->str: 
-    response = gen_sub.text()
-    return response
+    f = transcribe.text()
+    
+    return transcribe.get_text(f, openai.api_key)
 
 # Get specification array
 def get_specs(specifications: str)->list[str]:
@@ -29,7 +31,7 @@ def prompt_gen(spec_arr: list[str], response: str)->str:
 
 # Sets up openai API credentials
 def set_api()->None:
-    openai.api_key = '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'
+    openai.api_key = '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'
 
 # Define a function to interact with the ChatGPT model
 def chat_with_gpt(prompt: str)->str:
@@ -60,6 +62,7 @@ def response_gen(prompt: str)->list[int]:
 if __name__ == '__main__':
     set_api()
     temp = get_audio()
+    print(temp)
     specs = input("Specs: ")
     spec_arr = get_specs()
     prompt = prompt_gen(spec_arr, temp)
