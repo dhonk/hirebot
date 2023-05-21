@@ -51,12 +51,24 @@ def chat_with_gpt(prompt: str)->str:
 def result(response: str, prompt: str):
     set_api()
     temp = get_audio(response)
+    t = ''
     with open(prompt, 'r') as file:
         t = file.read()
-    prompt = prompt_gen(t, temp)
-    with open('out.json', 'a') as file:
-        t = chat_with_gpt(prompt)
-        file.write(f'{{\n{response[:-4]} {t}\n}}\n')
+    g_prompt = prompt_gen(t, temp)
+    
+    with open('out.json', 'a+') as file:
+        if file.tell() == 0: # File is empty
+            data = {}
+        else:
+            file.seek(0) 
+            data = json.load(file) # Load existing data
+        
+        t = chat_with_gpt(g_prompt)
+        data[response[:-4]] = t # Add new data
+
+        file.seek(0)
+        file.truncate() # Clear the file
+        json.dump(data, file) # Write the updated data back to the file
 
 if __name__ == '__main__':
     infile = input('infile: ')
