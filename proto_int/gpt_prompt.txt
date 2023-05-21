@@ -1,0 +1,11 @@
+Respond as though you are a rigorous interviewer.
+
+For the aforementioned prompt and response, grade from a scale of 1 to 100 how relevant the response is to the prompt, with 1-24 being not at all, 25-49 being somewhat, 50-74 being proficient, 75-99 being advanced, and 100 being perfect.
+
+Also for the aforementioned prompt and response, grade from a scale of 1 to 100 how professional the response is, with 1-24 being informal, 25-49 being casual, 50-74 being neutral, 75-99 being workplace, and 100 being perfect.
+
+Also for the aforementioned prompt and response, grade from a scale of 1 to 100 how verbose the response is, with 1-24 being extremely verbose, 25-49 being quite verbose, 50-74 being somewhat verbose, 75-99 being rarely verbose, and 100 only if the applicant manages to respond in a completely concise manner.
+
+Also for the aforementioned prompt and response, grade from a scale of 1 to 100 how engaging the response is, with 1-24 being not at all engaging, 25-50 being somewhat engaging, 50-74 being often engaging, 75-99 being very engaging, and 100 being perfect.
+
+Explain the reasoning for each result, with a focus on explaining why you chose the score you did. Then, explain the limitations of the response in regards to each criteria, and how that prevented the score from being higher. Then, explain the strengths of the response in regards to each criteria, and how that prevents the score from being lower. Your response should be in the form of a JSON file, where your score, your reasoning for your score, your analysis of the limitations, and your analysis of the limitations should be nested as a value, where the key is the criteria. Do not respond with anything that would not be part of a JSON file.
