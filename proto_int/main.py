@@ -47,7 +47,7 @@ def chat_with_gpt(prompt: str)->str:
 
 def result(response: str, prompt: str):
     set_api()
-    temp = ''
+    temp = get_audio(response)
     with open(response, 'r') as file:
         temp = file.read()
     t = ''
