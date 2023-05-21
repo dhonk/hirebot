@@ -3,7 +3,7 @@ import openai
 # API_KEY= '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'
 #openai.api_key = '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'
 
-def get_text(file, api):
+def get_text(file: str, api: str):
     model_id = 'whisper-1'
     media_file_path = file
     media_file = open(media_file_path, 'rb')    
@@ -15,11 +15,6 @@ def get_text(file, api):
         )
     
     return response['text']
-    
-def text():
-    file_path = input("Enter the path to the MP3 file: ")
-
-    return file_path
 
 
 

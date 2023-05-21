@@ -4,9 +4,8 @@ import transcribe
 import json
 
 # use gen_sub to turn audio into string
-def get_audio()->str: 
-    f = transcribe.text()
-    return transcribe.get_text(f, openai.api_key)
+def get_audio(file: str)->str:
+    return transcribe.get_text(file, openai.api_key)
 
 # Get specification array
 def get_specs(specifications: str)->list[str]:
@@ -61,6 +60,6 @@ def result(response: str, prompt: str):
         file.write(f'{{\n{response[:-4]} {t}\n}}')
 
 if __name__ == '__main__':
-    result('int_response.txt', 'prompt.txt')
-    result('eh_response.txt', 'prompt.txt')
+    result('bad_grammar.mp3', 'prompt.txt')
+    result('resume.mp3', 'prompt.txt')
 

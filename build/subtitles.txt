@@ -1,0 +1,34 @@
+WHY??????
+
+Target Companies (in ranking): Entertainment (books, movies, video games)
+Company's Perspective:
+ex) Video streaming providers (Netflix, Hulu, YouTube), Film/Movie producers, Scanlations team
+
+
+Marketing Stategy -> to make these movies "available" and "understandable" to all people 
+-> multiple subtitle options
+-> multiple audio language options
+
+Company Solution -> only make subtitles for most popular languages (English, Spanish)
+
+
+
+WHY?????
+
+Pain: Not all entertainment has the budget, availablity, or time to make product more 
+available
+Why don't movies have subtitles for all languages?
+    - licsensing and show agreements
+    - distract audience or cover the movie scenes
+    - not popular enough
+    - entertainment targets only specific people (restricted access to specific location)
+
+Why do we need generative ai subtitles/translation technology?
+    - helps company make their work undersatndable to different people
+    - entertainment is a HUGE part of everyone's life 
+    - large audience capable of using it
+    - doesn't require licensing bc only needs producers permission
+
+Problems:
+-Privacy of a company's terms and agreements
+    maybe they don't want their stuff to be restricted
