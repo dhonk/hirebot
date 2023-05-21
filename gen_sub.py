@@ -25,16 +25,16 @@ def transcribe_audio(file_path):
 def text():
     file_path = input("Enter the path to the MP3 file: ")
 
+
     if not os.path.isfile(file_path):
         print("Invalid file path.")
         return
 
     text = transcribe_audio(file_path)
 
-    if text:
-        print("Transcribed text:", text)
-
     return text
 
+def main():
+    print(text())
 if __name__ == "__main__":
-    pass
+    main()
