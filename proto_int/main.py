@@ -1,37 +1,37 @@
-import openai 
+import openai
 import string
 import matplotlib.pyplot as plt
 import gen_sub
 
-#file_path = input("Applicant response file path: ")
-
+# String that stores applicant response from speech to text program
 applicant_response = ''
-#try:
-#        with open(file_path, 'r') as file:
-#            applicant_response = file.read();
 
-#except FileNotFoundError:
-#    print(f"File '{file_path}' not found.")
+# use gen_sub to turn audio into string
+def get_audio(): 
+    applicant_response = gen_sub.text()
 
-applicant_response = gen_sub.text()
+# initialize specification array
+spec_arr[]
+def get_specs(specifications):
+    spec_arr = specifications.split()
 
-specifications = input("Specify a few traits you're looking for: ")
-spec_arr = specifications.split()
+# generate prompt based 
+def prompt_gen(spec_arr: String[], ) -> int:
+    variables = string.ascii_lowercase
 
-variables = string.ascii_lowercase
+    gpt_prompt = ''
+    gpt_prompt = applicant_response + '\n\n'
+    gpt_prompt += 'Pretend that you are a interviewer for job applicants. Grade this prompt with this rubric:\n'
+    for i in range(len(spec_arr)):
+        gpt_prompt += f"a variable {variables[i]} indicating {spec_arr[i]} from a scale of 1-100, 50 being an acceptable college essay or job application"
+    gpt_prompt += 'Grade this prompt exactly with this rubric with this format:\n'
+    for i in range(len(spec_arr)):
+        gpt_prompt += f"{spec_arr[i]}\n"
+        gpt_prompt += f"{variables[i]}\n"
 
-gpt_prompt = ''
-gpt_prompt = applicant_response + '\n\n'
-gpt_prompt += 'Pretend that you are a interviewer for job applicants. Grade this prompt with this rubric:\n'
-for i in range(len(spec_arr)):
-    gpt_prompt += f"a variable {variables[i]} indicating {spec_arr[i]} from a scale of 1-100, 50 being an acceptable college essay or job application"
-gpt_prompt += 'Grade this prompt exactly with this rubric with this format:\n'
-for i in range(len(spec_arr)):
-    gpt_prompt += f"{spec_arr[i]}\n"
-    gpt_prompt += f"{variables[i]}\n"
-
-# Set up your OpenAI API credentials
-openai.api_key = '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'
+# Sets up openai API credentials
+def set_api():
+    openai.api_key = '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'
 
 # Define a function to interact with the ChatGPT model
 def chat_with_gpt(prompt):
@@ -52,18 +52,20 @@ def chat_with_gpt(prompt):
     else:
         return "Sorry, I couldn't generate a response."
 
-response = chat_with_gpt(gpt_prompt)
+def response_gen(prompt: String)
+    response = chat_with_gpt(gpt_prompt)
 
-res_arr = response.split('\n')
+    res_arr = response.split('\n')
 
-for i in range(len(res_arr)):
-    res_arr[i] = int(''.join(c for c in res_arr[i] if c.isdigit()))
+    for i in range(len(res_arr)):
+        res_arr[i] = int(''.join(c for c in res_arr[i] if c.isdigit()))
 
-plt.bar(spec_arr, res_arr, width=0.3)
-plt.xlabel('Trait')
-plt.ylabel('Affinity')
-plt.title('Applicant Affinity')
-plt.ylim(0,100)
+if __name__ == '__main__':
+    plt.bar(spec_arr, res_arr, width=0.3)
+    plt.xlabel('Trait')
+    plt.ylabel('Affinity')
+    plt.title('Applicant Affinity')
+    plt.ylim(0,100)
 
-plt.show()
+    plt.show()
 
