@@ -27,7 +27,7 @@ def prompt_gen(prompt: str, response: str)->str:
 
 # Sets up openai API credentials
 def set_api()->None:
-    openai.api_key = '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'
+    openai.api_key = '' # Paste in API key here
 
 # Define a function to interact with the ChatGPT model
 def chat_with_gpt(prompt: str)->str:
