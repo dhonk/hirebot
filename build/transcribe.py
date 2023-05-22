@@ -1,8 +1,5 @@
 import openai
 
-# API_KEY= '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'
-#openai.api_key = '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'
-
 def get_text(file: str, api: str):
     model_id = 'whisper-1'
     media_file_path = file
