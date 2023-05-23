@@ -1,3 +1,0 @@
-#Prototype Subtitling
-
-Nick Daniel
